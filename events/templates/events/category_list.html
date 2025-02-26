@@ -1,0 +1,16 @@
+{% extends 'events/base.html' %}
+{% block content %}
+<h1 class="text-2xl font-bold">Categories</h1>
+<a href="{% url 'category_create' %}" class="bg-green-500 text-white px-4 py-2 rounded">Create Category</a>
+<ul>
+    {% for category in categories %}
+    <li>{{ category.name }}
+        <a href="{% url 'category_update' category.id %}" class="text-yellow-500 px-2">Edit</a>
+        <form action="{% url 'category_delete' category.id %}" method="POST" class="inline">
+            {% csrf_token %}
+            <button type="submit" class="text-red-500">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

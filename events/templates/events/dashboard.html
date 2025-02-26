@@ -1,0 +1,20 @@
+{% extends 'events/base.html' %}
+{% block content %}
+<h1 class="text-3xl font-bold">Organizer Dashboard</h1>
+<div class="grid grid-cols-2 gap-4">
+    <div class="bg-white p-4 shadow-md rounded">
+        <p>Total Participants: {{ total_participants }}</p>
+        <p>Total Events: {{ total_events }}</p>
+        <p>Upcoming Events: {{ upcoming_events }}</p>
+        <p>Past Events: {{ past_events }}</p>
+    </div>
+    <div class="bg-white p-4 shadow-md rounded">
+        <h2 class="text-xl">Today's Events</h2>
+        <ul>
+            {% for event in todays_events %}
+            <li>{{ event.name }} - {{ event.date }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
